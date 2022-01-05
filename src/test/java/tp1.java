@@ -3,13 +3,14 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class tp1 {
 
     WebDriver driver;
-    
+
     @BeforeMethod
     public void setup(){
 
@@ -18,6 +19,13 @@ public class tp1 {
         driver.manage().window().maximize();
         WebElement buttonCookies = driver.findElement(By.id("sp-cc-accept"));
         buttonCookies.click();
+
+    }
+
+    @AfterMethod
+    public void teardown(){
+
+        driver.quit();
 
     }
 
@@ -38,7 +46,6 @@ public class tp1 {
         //driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']"));
         //driver.findElement(By.xpath("//*[@name='field-keywords']"));
         //driver.findElement(By.cssSelector("[cel_widget_id][role]"));
-        driver.quit();
     }
 
     @Test
@@ -56,7 +63,5 @@ public class tp1 {
         selectionnerProduit.click();
         WebElement boutonAjouter = driver.findElement(By.id("add-to-cart-button"));
         boutonAjouter.click();
-        driver.quit();
-
     }
 }
