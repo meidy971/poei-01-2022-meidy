@@ -3,9 +3,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class tp1 {
 
@@ -35,17 +39,7 @@ public class tp1 {
         WebElement barreRecherche = driver.findElement(By.id("twotabsearchtextbox"));
         barreRecherche.sendKeys("machine à raclette");
         barreRecherche.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        //*[@id="twotabsearchtextbox"]
-        ///html/body/div[1]/header/div/div[1]/div[2]/div/form/div[3]/div[1]/input
-        //driver.findElement(By.name("field-keywords"));
-        //driver.findElement(By.xpath("//*[@id='twotabsearchtextbox']"));
-        //driver.findElement(By.xpath("//*[@name='field-keywords']"));
-        //driver.findElement(By.cssSelector("[cel_widget_id][role]"));
+
     }
 
     @Test
@@ -54,14 +48,24 @@ public class tp1 {
         WebElement barreRecherche = driver.findElement(By.id("twotabsearchtextbox"));
         barreRecherche.sendKeys("machine à raclette");
         barreRecherche.sendKeys(Keys.ENTER);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        WebElement selectionnerProduit = driver.findElement(By.cssSelector("[cel_widget_id='MAIN-SEARCH_RESULTS-5']"));
+        WebElement selectionnerProduit = driver.findElement(By.cssSelector("[data-cel-widget='search_result_1']"));
         selectionnerProduit.click();
         WebElement boutonAjouter = driver.findElement(By.id("add-to-cart-button"));
         boutonAjouter.click();
     }
+
+    @Test
+    public void testExplicitWait() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        
+        driver.findElement(By.id("nav-hamburger-menu")).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".hmenu-item[data-menu-id='10']")));
+        driver.findElement(By.cssSelector(".hmenu-item[data-menu-id='10']")).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("ul.hmenu-visible > li:nth-child(3)")));
+        driver.findElement(By.cssSelector("ul.hmenu-visible > li:nth-child(3) > a")).click();
+    }
+
 }
