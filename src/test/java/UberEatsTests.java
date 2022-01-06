@@ -21,7 +21,7 @@ public class UberEatsTests {
         driver = new ChromeDriver();
         driver.get("https://www.ubereats.com/fr");
         driver.manage().window().maximize();
-        WebElement buttonCookies = driver.findElement(By.cssSelector("button[class='bc gh gi gl bj bk bl bm bn bo bt bu ba bb']"));
+        WebElement buttonCookies = driver.findElement(By.cssSelector("#cookie-banner button.bj"));
         buttonCookies.click();
 
     }
