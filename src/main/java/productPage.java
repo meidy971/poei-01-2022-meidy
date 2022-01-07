@@ -1,0 +1,2 @@
+public class productPage {
+}
