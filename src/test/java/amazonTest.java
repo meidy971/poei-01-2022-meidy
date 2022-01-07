@@ -16,7 +16,7 @@ public class amazonTest {
         driver.get("https://www.amazon.fr");
         driver.manage().window().maximize();
 
-        // fermer cookies
+        // Fermer les cookies
         driver.findElement(By.id("sp-cc-accept")).click();
     }
 
@@ -29,9 +29,14 @@ public class amazonTest {
     public void nintendoSwitchAddToCartPriceTest() {
         // Arrange
         String productName = "Nintendo Switch OLED";
+
         // Act
         mainPage mainpage = new mainPage(driver);
         mainpage.searchProduct(productName);
+
+        searchResultPage searchresultpage = new searchResultPage(driver);
+        searchresultpage.openResult(0);
+
         // Assert
     }
 
@@ -43,5 +48,8 @@ public class amazonTest {
         // Act
         mainPage mainPage = new mainPage(driver);
         mainPage.searchProduct(productName);
+
+        // Assert
+
     }
 }
