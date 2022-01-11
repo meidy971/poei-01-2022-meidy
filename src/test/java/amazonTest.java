@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pageobjects.amazon.*;
+import pageobjects.apple.MainPage;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -80,5 +81,12 @@ public class amazonTest {
 
         // Assert
 
+    }
+
+    @Test
+    public void passedTest() {
+        MainPage mainPage = new MainPage(driver);
+
+        Assert.assertTrue(true);
     }
 }
